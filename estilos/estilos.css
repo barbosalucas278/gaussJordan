@@ -1,0 +1,14 @@
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+table,
+tr,
+td {
+  text-align: center;
+  border: 1px solid black;
+  width: 100px;
+  padding: 3px;
+  border-collapse: collapse;
+}
