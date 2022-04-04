@@ -68,7 +68,11 @@ class Matriz {
     return false;
   }
   crearFraccion(dato) {
-    console.log(dato + "en crear fraccion");
+    console.log(dato + "en crear fraccion" + typeof dato);
+    if (dato instanceof Fraccion) {
+      dato = dato.toString();
+    }
+
     if (isNaN(dato) && dato.includes("/")) {
       let datoArray = dato.split("/");
       let fraccion = new Fraccion(datoArray[0], datoArray[1]);
@@ -93,13 +97,10 @@ class Matriz {
           celda = 0;
         } //posiciones de la fila del pivot celdas dividido por el pivot
         else if (i == this.posicionPibot[0]) {
-          if (this.esFraccion(celda)) {
+          if (this.esFraccion(celda) || this.esFraccion(this.pibot)) {
             celda = this.crearFraccion(celda);
             let pibotFraccion = this.crearFraccion(this.pibot);
             celda = celda.cociente(pibotFraccion).toString();
-          } else if (this.esFraccion(this.pibot)) {
-            let pibotFraccion = this.crearFraccion(this.pibot);
-            celda = pibotFraccion.cociente(celda).toString();
           } else if (celda % this.pibot != 0) {
             celda = `${celda}/${this.pibot}`;
           } else if (celda == 0) {
@@ -136,6 +137,9 @@ class Matriz {
             let dividendoSegundoTermino =
               celda0JFraccion.producto(celdaI1Fraccion);
 
+            dividendo = this.crearFraccion(dividendo);
+            console.log(dividendo);
+            console.log(dividendoSegundoTermino);
             dividendo = dividendo.resta(dividendoSegundoTermino);
           } else {
             //console.log("entro al no fraccion");

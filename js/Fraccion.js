@@ -45,6 +45,9 @@ class Fraccion {
   }
 
   resta(otra) {
+    if (otra == 0) {
+      return this;
+    }
     const mcm = this.minimoComunMultiplo(this.denominador, otra.denominador);
     const diferenciaFraccionActual = mcm / this.denominador;
     const diferenciaOtraFraccion = mcm / otra.denominador;
@@ -62,12 +65,12 @@ class Fraccion {
       return new Fraccion(
         this.numerador * otra.numerador,
         this.denominador * otra.denominador
-      ).simplifica();
+      );
     } else {
       if (otra == 0) {
         return 0;
       }
-      return new Fraccion(this.numerador, this.denominador * otra).simplifica();
+      return new Fraccion(this.numerador, this.denominador * otra);
     }
   }
 
