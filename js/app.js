@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     matriz.setRestricciones(campoRestriccion.value);
     tabla.appendChild(matriz.dibujarTabla());
     btnArmarMatriz.style.display = "none";
+    btnCalcular.classList.remove("visually-hidden");
   });
   //////////////////////////////////////////////////////////////////////////////////////
   //Selecciono el pibot lo guardo en indices pibot
@@ -25,9 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.target.style.color = "red";
       e.target.style.fontWeight = "bold";
     } else {
-      console.log(e.target);
       selectorPibot = e.target;
-      console.log(selectorPibot);
       selectorPibot.style.color = "red";
       selectorPibot.style.fontWeight = "bold";
       e.target.style.color = "black";
@@ -35,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     selectorPibot = e.target;
     let variable = selectorPibot.id.slice(-1);
-    let restriccion = selectorPibot.id.slice(-1);
+    let restriccion = e.path[1].id.slice(-1);
     indicesPibot.variable = variable;
     indicesPibot.restriccion = restriccion;
   });
@@ -53,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
       matrizIngresada.push(valoresDeFila);
     });
     matriz.setMatrizACalcular(matrizIngresada);
+    console.log(indicesPibot.restriccion);
+    console.log(indicesPibot.variable);
     matriz.setPibot(indicesPibot.restriccion, indicesPibot.variable);
     matriz.setMatrizACalcular(matriz.CalcularNuevaMatriz());
     tabla.innerHTML = "";

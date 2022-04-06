@@ -1,7 +1,4 @@
-/* * {
-  margin: 0;
-  padding: 0;
-} */
+
 
 table,
 tr,
@@ -11,4 +8,5 @@ td {
   width: 100px;
   padding: 3px;
   border-collapse: collapse;
+  cursor: pointer;
 }
