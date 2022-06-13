@@ -21,7 +21,7 @@ class Matriz {
   setPibot(fila, columna) {
     this.posicionPibot = [fila, columna];
     this.pibot = this.matriz[fila][columna];
-    console.log(`El pivot en cada vuelta asd : ${this.pibot}`);
+    console.log(`El pivot en cada vuelta : ${this.pibot}`);
   }
   setVariables(value) {
     this.CantidadVariables = value;
